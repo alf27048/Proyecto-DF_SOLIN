@@ -87,3 +87,59 @@ a {
 .productos:hover .nav-sublista, .productos:focus-within .nav-sublista  {
    display: block;
 }
+
+/*-----------------------FORMULARIO DE CONTACTO---------------*/
+.div-contacto{
+   width: 450px;
+   margin: auto;
+   background: rgba(0,0,0,0.4) ;  
+   padding: 10px 20px;
+   box-sizing: border-box;
+   margin-top: 20px;
+   border-radius: 7px;
+   
+ }
+ .contacto-h1{
+   margin: 0;
+   font-size: 20px;
+   margin-left: 10px;
+   margin-bottom: 20px;
+ }
+ .contacto-h2{
+   margin: 0;
+   font-size: 17px;
+   margin-left: 10px;
+   margin-bottom: 20px;
+ }
+ 
+ .form-label{
+   font-size: 14px;
+ }
+ 
+ .form-nombre, .form-email, .form-tel, .form-area, .form-boton{
+   width: 100%;
+   margin-bottom: 20px;
+   padding: 7px;
+   box-sizing: border-box;
+   font-size: 14px;
+   border: none;
+ }
+ .form-area{
+   min-height: 100px;
+   max-height: 200px;
+   max-width: 100%;
+ 
+ }
+ .form-boton{
+   background: rgb(123, 122, 212); 
+   color: var(--negro);
+   padding: 20px;
+ }
+ .form-boton:hover{
+   cursor: pointer;
+ }
+ 
+ .contenedor-info{
+   display: flex;
+   text-align: center;
+ }

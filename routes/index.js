@@ -38,5 +38,28 @@ router.get('/imagen', async (req, res) => {
 
   res.send(Img); // devuelve un JSON con la informacion
 });
+/* GET de productos basicos */
+router.get('/p-basico', async (req, res) => {
+  // Los datos de la URL vienen en un req.query
+  const product = await api.getProductBasic();
+  res.render('pages/p-basico', { product });
+    });
+  
+ /*GET de productos premium */
+  router.get('/p-premium', async (req, res) => {
+    // Los datos de la URL vienen en un req.query
+    const product = await api.getProductPremium();
+    res.render('pages/p-premium', { product });
+      }); 
+
+      /*GET de producto destapador */
+  router.get('/p-destapador', async (req, res) => {
+    // Los datos de la URL vienen en un req.query
+    const product = await api.getProductDestapador();
+    res.render('pages/p-destapador', { product });
+      }); 
+
+
+
 
 module.exports = router;
