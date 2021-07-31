@@ -1,7 +1,10 @@
 var express = require('express');
+const sgMail = require('@sendgrid/mail');
 var router = express.Router();
 const api = require('../api');
 const db = require('../models');
+
+sgMail.setApiKey('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');
 
 /* GET home page. - Tengo que cambiar la ruta de la home,
  ahi voy a mostrar otra cosa no todos los productos*/ 
@@ -14,11 +17,30 @@ router.get('/', async (req, res) => {
   // res.send(product); // devuelve un JSON con la informacion
 });
 
-
 /* GET de Contacto */
 router.get('/contacto', (req, res) => {
   res.render('pages/contacto');
 });
+
+/* POST de Enviar mail */
+router.post('/enviar', (req, res) => {
+ /* console.log(req.body.nombre);
+  console.log(req.body.email);
+  console.log(req.body.telefono);
+  console.log(req.body.comentarios);*/
+  const msg = {
+    to: 'ana.molina1205@gmail.com',
+    from: 'ana.molina1205@gmail.com', // Use the email address or domain you verified above
+    subject: 'Mensaje desde web DF-SOLIN',
+    text: `Recibiste una mail de ${req.body.nombre}`,
+    
+  };
+  //ES6
+  sgMail.send(msg)
+
+  res.send('Mensaje de prueba enviado');
+});
+
 /* GET de Nosotros */
 router.get('/nosotros', (req, res) => {
   res.render('pages/nosotros');
@@ -58,14 +80,8 @@ router.get('/p-basico', async (req, res) => {
     const product = await api.getProductDestapador();
     res.render('pages/p-destapador', { product });
       });
-      /* GET producto por ID 
-      router.get('/uni-producto/:id', async (req, res) => {
-       console.log(req.params);
-       const product = await api.getProductById(req.params.id);
-       res.render('pages/uni-producto', { product });
-       // res.send(product);
-      }); */
-
+      
+      /* GET producto por ID*/
       router.get('/uni-producto/:id', async (req, res) => {
         const Img = await api.getImg();
         const product = await api.getProductById(req.params.id);
@@ -73,12 +89,7 @@ router.get('/p-basico', async (req, res) => {
         res.render('pages/uni-producto', { Img, product });
       });
       
-      /* GET producto por ID
-      router.get('/uni-producto/:id', async (req, res) => {
-  			const produc = await api.getProductById(req.params.id);
-  			//res.send(produc);
-  			res.render('pages/uni-producto', { produc });  	
-		}); */
+      
 
 
 
