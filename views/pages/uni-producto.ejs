@@ -12,8 +12,18 @@
     <%- include('../partials/nav') %>
     <h1><%= product.nombre %></h1>
     <h2>Descripción: <%= product.descripcion %></h2>
-    <h2>Precio : <%= product.precio %></h2> 
-     
+    <h2>Precio : <%= product.precio %></h2>
+    <ul>
+        <% Img.forEach(img => { %>
+            <% if(img.productoId === product.id) {%>
+                <li>
+                    <img src="<%= img.foto %>" alt="">
+                </li>
+            <% } %>
+        <% }) %>
+    </ul>
+
+    
     
 </body>
 </html>

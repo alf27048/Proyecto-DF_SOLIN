@@ -58,12 +58,19 @@ router.get('/p-basico', async (req, res) => {
     const product = await api.getProductDestapador();
     res.render('pages/p-destapador', { product });
       });
-      /* GET producto por ID */
+      /* GET producto por ID 
       router.get('/uni-producto/:id', async (req, res) => {
        console.log(req.params);
        const product = await api.getProductById(req.params.id);
        res.render('pages/uni-producto', { product });
        // res.send(product);
+      }); */
+
+      router.get('/uni-producto/:id', async (req, res) => {
+        const Img = await api.getImg();
+        const product = await api.getProductById(req.params.id);
+      
+        res.render('pages/uni-producto', { Img, product });
       });
       
       /* GET producto por ID
