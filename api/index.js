@@ -59,6 +59,15 @@ const getProductDestapador = async () => {
 
     return product;
 }
+const getProductById = async (id) => {  	
+    const product = await db.producto.findByPk(id, {
+       include: db.imagen
+    }).then(result => {
+            return result
+       });
+return product;
+}
+
 
 
 
@@ -68,7 +77,9 @@ module.exports = {
     getImg,
     getProductBasic,
     getProductPremium,
-    getProductDestapador
+    getProductDestapador,
+    getProductById
+    
    
     
 }

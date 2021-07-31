@@ -31,7 +31,7 @@ router.get('/productos', async (req, res) => {
   
     res.render('pages/productos', { product });
   });
-
+/*GET de imagenes */
 router.get('/imagen', async (req, res) => {
   const Img = await api.getImg();
   console.log(Img);
@@ -57,7 +57,21 @@ router.get('/p-basico', async (req, res) => {
     // Los datos de la URL vienen en un req.query
     const product = await api.getProductDestapador();
     res.render('pages/p-destapador', { product });
-      }); 
+      });
+      /* GET producto por ID */
+      router.get('/uni-producto/:id', async (req, res) => {
+       console.log(req.params);
+       const product = await api.getProductById(req.params.id);
+       res.render('pages/uni-producto', { product });
+       // res.send(product);
+      });
+      
+      /* GET producto por ID
+      router.get('/uni-producto/:id', async (req, res) => {
+  			const produc = await api.getProductById(req.params.id);
+  			//res.send(produc);
+  			res.render('pages/uni-producto', { produc });  	
+		}); */
 
 
 

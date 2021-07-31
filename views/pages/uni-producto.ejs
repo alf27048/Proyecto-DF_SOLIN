@@ -4,22 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Productos</title>
+    <title><%= product.nombre %></title>
     <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
+    
     <%- include('../partials/nav') %>
-
-    <ul class="listado">
-        <% product.forEach(produc => { %>	
-          <li class="listado-item">
-             <a href="/uni-producto/<%= produc.id %>">
-                <%= produc.nombre %> : <%= produc.descripcion %>
-            </a>
-          </li>
-  
-        <% }) %>
-    </ul>
+    <h1><%= product.nombre %></h1>
+    <h2>Descripción: <%= product.descripcion %></h2>
+    <h2>Precio : <%= product.precio %></h2> 
+     
     
 </body>
 </html>
