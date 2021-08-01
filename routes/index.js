@@ -11,15 +11,15 @@ sgMail.setApiKey('SG.W0FnycpRS7uSR_jCGxuBEQ.nf6VwPs2DU-6akUWS_ZLm1ITJ7TbENisK9an
 
 router.get('/', async (req, res) => {
   const product = await api.getProduct();
-  console.log(product);
+  //console.log(product);
 
-  res.render('index', { title: 'Proyecto', product });
+  res.render('index', { title: 'DF-SOLIN', product });
   // res.send(product); // devuelve un JSON con la informacion
 });
 
 /* GET de Contacto */
 router.get('/contacto', (req, res) => {
-  res.render('pages/contacto');
+  res.render('pages/contacto',  {title: 'Contacto'});
 });
 
 /* POST de Enviar mail */
@@ -32,7 +32,7 @@ router.post('/enviar', (req, res) => {
     to: 'ana.molina1205@gmail.com',
     from: 'ana.molina1205@gmail.com', // Use the email address or domain you verified above
     subject: 'Mensaje desde web DF-SOLIN',
-    text: `Recibiste una mail de ${req.body.nombre}`,
+    text: `Recibiste una mail de ${req.body.email}, nombre: ${req.body.nombre} , Telefono: ${req.body.telefono}, Comentario: ${req.body.comentarios}`,
     
   };
   //ES6
@@ -43,7 +43,7 @@ router.post('/enviar', (req, res) => {
 
 /* GET de Nosotros */
 router.get('/nosotros', (req, res) => {
-  res.render('pages/nosotros');
+  res.render('pages/nosotros',  {title: 'Nosotros'});
 });
 
 /* GET de Productos */
@@ -51,7 +51,7 @@ router.get('/productos', async (req, res) => {
   const product = await api.getProduct();
     console.log(product);
   
-    res.render('pages/productos', { product });
+    res.render('pages/productos', { title: 'Productos', product });
   });
 /*GET de imagenes */
 router.get('/imagen', async (req, res) => {
@@ -64,21 +64,21 @@ router.get('/imagen', async (req, res) => {
 router.get('/p-basico', async (req, res) => {
   // Los datos de la URL vienen en un req.query
   const product = await api.getProductBasic();
-  res.render('pages/p-basico', { product });
+  res.render('pages/p-basico', { title: 'Productos básicos', product });
     });
   
  /*GET de productos premium */
   router.get('/p-premium', async (req, res) => {
     // Los datos de la URL vienen en un req.query
     const product = await api.getProductPremium();
-    res.render('pages/p-premium', { product });
+    res.render('pages/p-premium', { title: 'Productos premium',product });
       }); 
 
       /*GET de producto destapador */
   router.get('/p-destapador', async (req, res) => {
     // Los datos de la URL vienen en un req.query
     const product = await api.getProductDestapador();
-    res.render('pages/p-destapador', { product });
+    res.render('pages/p-destapador', { title: 'Destapadores', product });
       });
       
       /* GET producto por ID*/

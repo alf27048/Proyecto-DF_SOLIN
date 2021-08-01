@@ -6,6 +6,76 @@ body {
 a {
   color: #00B7FF;
 }
+
+/*---------------------- CABECERA --------------------*/
+.cabecera-logo, .nav {
+   max-width: 1000px;
+   margin: auto;
+   
+
+}
+.cabecera{
+
+   background-color: var(--blanco);
+   padding: 5px 0;   
+   margin: 0; 
+   position: fixed;
+   left: 0;
+   top: 0;
+   right: 0;
+   box-shadow: 0 1px 3px rgb(0 0 0 / 30%);
+}
+.cabecera-logo{
+  /* background-color: salmon;*/
+   display: flex;
+  
+
+   justify-content: space-between;
+   align-items: center;
+  /* flex-wrap: wrap;*/
+   
+         
+}
+
+.div-form{
+   display: flex;
+   
+}
+.div-form_input{
+   font-size: 15px;
+   width: 300px;
+   padding: 2px;
+}
+.div-form_boton{
+   
+   cursor: pointer;
+   padding: 0 15px;
+   /*background: none; */
+   border: none;
+   border-radius: 0 6px 6px 0;
+
+}
+.div-form_boton::before{
+   content: url(../images/icons/lupa.png);
+   
+}
+
+
+.div-botoncrear, .div-botoniniciar{
+   border: none;
+  font-size: 15px;
+  text-decoration: none;
+  color: var(--negro);
+  padding-left: 4px;
+   
+}
+.div-botoniniciar:hover{
+   text-decoration: underline;
+}
+.div-botoncrear:hover{
+   text-decoration: underline;
+}
+
 /*-------------Estilos del menu-----------*/
 .nav{
   /*  background-color: blueviolet;  */  

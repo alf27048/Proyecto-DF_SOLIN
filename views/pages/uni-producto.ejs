@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= product.nombre %></title>
     <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="icon" href="images/icons/logo.ico">
 </head>
 <body>
-    
+    <%- include('../partials/header') %>
     <%- include('../partials/nav') %>
     <h1><%= product.nombre %></h1>
     <h2>Descripción: <%= product.descripcion %></h2>
