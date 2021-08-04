@@ -1,85 +1,98 @@
-const { Op } = require('sequelize'); 
-const db = require('../models');
+const { Op } = require("sequelize"); 
+const db = require("../models");
 
 const getProduct = async () => {
-    const product = await db.producto.findAll({ include: db.imagen})
-        .then(result => {
-            return result;
-        });
+	const product = await db.producto.findAll({ include: db.imagen})
+		.then(result => {
+			return result;
+		});
 
-    return product;
-}
+	return product;
+};
 
 const getImg = async () => {
-    const Img = await db.imagen.findAll()
-        .then(result => {
-            return result;
-    });
+	const Img = await db.imagen.findAll()
+		.then(result => {
+			return result;
+		});
 
-        return Img;
-}
+	return Img;
+};
 
 const getProductBasic = async () => {
-    const product = await db.producto.findAll({ 
+	const product = await db.producto.findAll({ 
 		where:{
-		nombre:{
-			[Op.endsWith]: 'latas'
+			nombre:{
+				[Op.endsWith]: "latas"
 			}
 		},	
 	}).then(result => {
-            return result;
-        });
+		return result;
+	});
 
-    return product;
-}
+	return product;
+};
 
 const getProductPremium = async () => {
-    const product = await db.producto.findAll({ 
+	const product = await db.producto.findAll({ 
 		where:{
-		nombre:{
-			[Op.substring]: 'con'
+			nombre:{
+				[Op.substring]: "con"
 			}
 		},	
 	}).then(result => {
-            return result;
-        });
+		return result;
+	});
 
-    return product;
-}
+	return product;
+};
 const getProductDestapador = async () => {
-    const product = await db.producto.findAll({ 
+	const product = await db.producto.findAll({ 
 		where:{
-		nombre:{
-			[Op.substring]: 'destapa'
+			nombre:{
+				[Op.substring]: "destapa"
 			}
 		},	
 	}).then(result => {
-            return result;
-        });
+		return result;
+	});
 
-    return product;
-}
+	return product;
+};
 const getProductById = async (id) => {  	
-    const product = await db.producto.findByPk(id, {
-       include: db.imagen
-    }).then(result => {
-            return result
-       });
-return product;
-}
-
+	const product = await db.producto.findByPk(id, {
+		include: db.imagen
+	}).then(result => {
+		return result;
+	});
+	return product;
+};
+const findProducByNombre = async (query) => {   
+	const product =await db.producto.findAll({
+		where: {
+			nombre: {
+				[Op.substring]: query  
+			}
+		},
+		include: db.imagen
+	}).then(result => {
+		return result;
+	});
+	return product;
+};
 
 
 
 
 module.exports = {
-    getProduct,
-    getImg,
-    getProductBasic,
-    getProductPremium,
-    getProductDestapador,
-    getProductById
+	getProduct,
+	getImg,
+	getProductBasic,
+	getProductPremium,
+	getProductDestapador,
+	getProductById,
+	findProducByNombre
     
    
     
-}
+};

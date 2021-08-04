@@ -9,19 +9,22 @@
     <link rel="icon" href="images/icons/logo.ico">
 </head>
 <body>
-    <%- include('../partials/header') %>
-    <%- include('../partials/nav') %>
-
-    <ul class="listado">
-        <% product.forEach(produc => { %>	
-          <li class="listado-item">
-             <a href="/uni-producto/<%= produc.id %>">
-                <%= produc.nombre %> : <%= produc.descripcion %>
-            </a>
-          </li>
-  
-        <% }) %>
-    </ul>
+    <div class="cabecera">
+        <%- include('../partials/header') %>
+        <%- include('../partials/nav') %>
+    </div>
+    <div class="contenedor">
+        <ul class="listado">
+            <% product.forEach(produc => { %>	
+            <li class="listado-item">
+                <a href="/uni-producto/<%= produc.id %>">
+                    <%= produc.nombre %> : <%= produc.descripcion %>
+                </a>
+            </li>
+    
+            <% }) %>
+        </ul>
+    </div>
     
 </body>
 </html>

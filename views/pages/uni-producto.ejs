@@ -6,24 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= product.nombre %></title>
     <link rel="stylesheet" href="/stylesheets/style.css">
-    <link rel="icon" href="images/icons/logo.ico">
+    <link rel="icon" href="/images/icons/logo.ico">
 </head>
 <body>
-    <%- include('../partials/header') %>
-    <%- include('../partials/nav') %>
-    <h1><%= product.nombre %></h1>
-    <h2>Descripción: <%= product.descripcion %></h2>
-    <h2>Precio : <%= product.precio %></h2>
-    <ul>
-        <% Img.forEach(img => { %>
-            <% if(img.productoId === product.id) {%>
-                <li>
-                    <img src="<%= img.foto %>" alt="">
-                </li>
-            <% } %>
-        <% }) %>
-    </ul>
-
+    <div class="cabecera">
+        <%- include('../partials/header') %>
+        <%- include('../partials/nav') %>
+    </div>
+    <div class="contenedor">
+        <h1><%= product.nombre %></h1>
+        <h2>Descripción: <%= product.descripcion %></h2>
+        <h2>Precio : <%= product.precio %></h2>
+        <ul>
+            <% Img.forEach(img => { %>
+                <% if(img.productoId === product.id) {%>
+                    <li>
+                        <img src="<%= img.foto %>" alt="">
+                    </li>
+                <% } %>
+            <% }) %>
+        </ul>
+    </div>
     
     
 </body>
